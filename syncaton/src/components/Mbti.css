@@ -1,0 +1,27 @@
+/* Mbti.css */
+.mbti-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow-y: auto; /* 세로 스크롤 허용 */
+  }
+  
+  .mbti-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .mbti-text {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .mbti-image {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    overflow-y: auto; /* 세로 스크롤 허용 */
+  }
+  
