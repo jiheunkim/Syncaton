@@ -1,6 +1,7 @@
 import React from 'react';
 import './Cards.css';
 import CardItem from './CardItem';
+import { Link } from 'react-router-dom';
 
 function Cards() {
   return (
@@ -21,6 +22,10 @@ function Cards() {
                   - 3개월 무이자 할부<br/>
                   - 현대백화점 2시간 무료주차<br/>
                   - 현대백화점 회원 혜택
+                  <br></br><br></br><br></br><br></br>
+
+                  <a href="https://www.ehyundai.com/newPortal/card/CA/CA000001_V.do?r=&event_id=&use_r=">카드 신청하러 가기</a>
+
                 </>
               }
               label='현대백화점 카드'
@@ -36,6 +41,9 @@ function Cards() {
                   -H.Point 20% 추가적립<br/>
                   -H.Point 최대 6만 P추가적립<br/>
                   -3개월 무의자 할부
+                  <br></br><br></br><br></br>
+
+                  <a href="https://www.ehyundai.com/newPortal/card/TB/TB000009_V.do">카드 신청하러 가기</a>
                 </>}
               label='현대백화점 Fit카드'
               path='https://www.ehyundai.com/newPortal/card/TB/TB000009_V.do'
@@ -50,6 +58,10 @@ function Cards() {
                 -포인트/캐시백백<br/>
                 -온라인결제 5%M포인트 적립<br/>
                 -주유 특별적립립<br/>
+
+                <br></br><br></br>
+
+                  <a href="https://card.hyundaicard.com/EVENT?id=best_4&eventCode=SBO01&utm_source=google.adwords&utm_medium=keyword_sa&utm_campaign=M&utm_content=SBO01&utm_term=%ED%98%84%EB%8C%80%EC%B9%B4%EB%93%9C%EC%97%A0&gad=1&gclid=CjwKCAjwvfmoBhAwEiwAG2tqzCy7jcQgFfXsIrCj3681HlrPS7SziBVvDk-wqAgD5WBhHDwfv37lshoCVwAQAvD_BwE">카드 신청하러 가기</a>
                 </>
               }
               label='코인원(coinone)'
