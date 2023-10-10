@@ -1,0 +1,8 @@
+/* BarChart.css */
+
+.bar {
+    height: 30px; /* 막대의 높이 */
+    background-color: #4caf50; /* 막대의 배경색 */
+    margin-bottom: 10px; /* 막대간 간격 */
+  }
+  
