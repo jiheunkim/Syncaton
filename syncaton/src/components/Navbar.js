@@ -78,7 +78,7 @@ function Navbar() {
             <div className="navbar-container">
               {/* 모바일버전에서 클릭하면 메뉴 보이도록 설정하는 것도 한다. (close Mobile Menu)는 다시 버튼 누르면 없어지고 생기고 하도록 한다. */}
               <Link to="/" className={`navbar-logo ${activeLink === 'home' ? 'active' : ''}`} onClick={() => handleLinkClick('home')}>
-                Syncaton
+                DalleCapture
               </Link>
               <div className="menu-icon" onClick={handleClick}>
                 <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
@@ -86,29 +86,11 @@ function Navbar() {
               <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                 <li className="nav-item">
                   <Link
-                    to="/board"
-                    className={`nav-links ${activeLink === 'board' ? 'active' : ''}`}
-                    onClick={() => handleLinkClick('board')}
+                    to="/mypage"
+                    className={`nav-links ${activeLink === 'mypage' ? 'active' : ''}`}
+                    onClick={() => handleLinkClick('mypage')}
                   >
-                    테스트 소개
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    to="/postbydate"
-                    className={`nav-links ${activeLink === 'postbydate' ? 'active' : ''}`}
-                    onClick={() => handleLinkClick('postbydate')}
-                  >
-                    성향분석테스트
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    to="/faq"
-                    className={`nav-links ${activeLink === 'faq' ? 'active' : ''}`}
-                    onClick={() => handleLinkClick('faq')}
-                  >
-                    FAQ
+                    마이페이지
                   </Link>
                 </li>
                 <li className="nav-item">
