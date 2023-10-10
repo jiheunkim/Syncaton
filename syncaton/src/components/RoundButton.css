@@ -1,0 +1,21 @@
+/* RoundButton.css */
+
+.round-button {
+    background-color: #000080; /* 남색 배경색 */
+    color: white; /* 텍스트 색상 */
+    padding: 20px 40px; /* 내부 여백 (상하 20px, 좌우 40px)을 조정하여 버튼 크기를 키움 */
+    text-align: center; /* 텍스트 가운데 정렬 */
+    text-decoration: none; /* 텍스트에 밑줄 없음 */
+    display: inline-block; /* 인라인 블록 요소로 표시 */
+    font-size: 18px; /* 텍스트 크기를 좀 더 크게 설정 */
+    margin: 4px 2px; /* 마진 (상하 4px, 좌우 2px) */
+    cursor: pointer; /* 커서 타입: 포인터 */
+    border-radius: 30px; /* 모서리 둥글게 설정 (12px로 조절) */
+    font-family: 'PretendardVariable', sans-serif; /* 원하는 글꼴로 설정 */
+    font-weight: 600; /* 원하는 글꼴 두께로 설정 */
+    position: fixed;
+    bottom: 40px; /* 화면 아래에서 40px 떨어진 위치로 변경 */
+    transform: translateX(-50%); /* 가로 크기의 반만큼 왼쪽으로 이동하여 중앙에 위치시킴 */
+}
+
+  
