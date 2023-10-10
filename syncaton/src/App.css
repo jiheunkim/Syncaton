@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: "PretendardVariable";
-  src: url("./font/PretendardVariable.ttf");
+  src: url("./components/font/PretendardVariable.ttf");
 }
 
 @media (prefers-reduced-motion: no-preference) {
