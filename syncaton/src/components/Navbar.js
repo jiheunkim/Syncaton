@@ -1,8 +1,8 @@
 import React, { useState, useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-// import { auth, signOut } from "../firebase-config";
-// import { onAuthStateChanged } from "firebase/auth";
-// import {Button} from './Button';
+import { auth, signOut } from "../firebase-config";
+import { onAuthStateChanged } from "firebase/auth";
+import {Button} from './Button';
 import './Navbar.css';
 
 function Navbar() {
@@ -31,18 +31,18 @@ function Navbar() {
     useEffect(() => {
         showButton();
 
-        // // Firebase Authentication의 로그인 상태를 관찰하고 사용자 이름을 가져옴
-        // const unsubscribe = onAuthStateChanged(auth, (user) => {
-        //   if (user) {
-        //     setLoggedIn(true);
-        //     setUserName(user.displayName || ''); // 사용자 이름 가져오기
-        //   } else {
-        //     setLoggedIn(false);
-        //     setUserName('');
-        //   }
-        // });
+        // Firebase Authentication의 로그인 상태를 관찰하고 사용자 이름을 가져옴
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+          if (user) {
+            setLoggedIn(true);
+            setUserName(user.displayName || ''); // 사용자 이름 가져오기
+          } else {
+            setLoggedIn(false);
+            setUserName('');
+          }
+        });
 
-        // return () => unsubscribe();
+        return () => unsubscribe();
     }, []);
 
     // 링크 클릭 시 activeLink 업데이트
@@ -55,20 +55,20 @@ function Navbar() {
 
     // 로그인 버튼 클릭 시 이벤트 핸들러
     const handleLoginButtonClick = () => {
-      // if (loggedIn) {
-      //   signOut(auth) // Firebase Authentication에서 로그아웃
-      //     .then(() => {
-      //       // 로그아웃 성공 시 수행할 작업 (예: 상태 업데이트 등)
-      //       setLoggedIn(false);
-      //       setUserName('');
-      //     })
-      //     .catch((error) => {
-      //       // 로그아웃 실패 시 처리
-      //       console.error('로그아웃 실패:', error);
-      //     });
-      // } else {
-      //   navigate("/sign-up");
-      // }
+      if (loggedIn) {
+        signOut(auth) // Firebase Authentication에서 로그아웃
+          .then(() => {
+            // 로그아웃 성공 시 수행할 작업 (예: 상태 업데이트 등)
+            setLoggedIn(false);
+            setUserName('');
+          })
+          .catch((error) => {
+            // 로그아웃 실패 시 처리
+            console.error('로그아웃 실패:', error);
+          });
+      } else {
+        navigate("/sign-up");
+      }
     };
 
 
@@ -78,7 +78,7 @@ function Navbar() {
             <div className="navbar-container">
               {/* 모바일버전에서 클릭하면 메뉴 보이도록 설정하는 것도 한다. (close Mobile Menu)는 다시 버튼 누르면 없어지고 생기고 하도록 한다. */}
               <Link to="/" className={`navbar-logo ${activeLink === 'home' ? 'active' : ''}`} onClick={() => handleLinkClick('home')}>
-                Syncaton
+                DalleCapture
               </Link>
               <div className="menu-icon" onClick={handleClick}>
                 <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
@@ -86,29 +86,11 @@ function Navbar() {
               <ul className={click ? 'nav-menu active' : 'nav-menu'}>
                 <li className="nav-item">
                   <Link
-                    to="/board"
-                    className={`nav-links ${activeLink === 'board' ? 'active' : ''}`}
-                    onClick={() => handleLinkClick('board')}
+                    to="/mypage"
+                    className={`nav-links ${activeLink === 'mypage' ? 'active' : ''}`}
+                    onClick={() => handleLinkClick('mypage')}
                   >
-                    테스트 소개
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    to="/postbydate"
-                    className={`nav-links ${activeLink === 'postbydate' ? 'active' : ''}`}
-                    onClick={() => handleLinkClick('postbydate')}
-                  >
-                    성향분석테스트
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link
-                    to="/faq"
-                    className={`nav-links ${activeLink === 'faq' ? 'active' : ''}`}
-                    onClick={() => handleLinkClick('faq')}
-                  >
-                    FAQ
+                    마이페이지
                   </Link>
                 </li>
                 <li className="nav-item">
