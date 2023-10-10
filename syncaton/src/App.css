@@ -7,6 +7,16 @@
   pointer-events: none;
 }
 
+.App-back{
+  background-color: #DEDEDE;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0; /* 바깥 여백을 없애기 위해 설정 */
+  padding: 0; /* 안쪽 여백도 없애기 위해 설정 */
+  overflow: hidden; /* 내용이 화면을 벗어나지 않도록 설정 */
+}
+
 @font-face {
   font-family: "PretendardVariable";
   src: url("./components/font/PretendardVariable.ttf");
