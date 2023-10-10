@@ -41,3 +41,67 @@
     transform: rotate(360deg);
   }
 }
+
+.btn {
+  margin-bottom: 10px;
+  margin-left: 1%;
+  width: 100%;
+  color: black;
+  background-color: white;
+  height: 50px;
+  border: 0.5px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &.active {
+      background-color: lightblue;
+  }
+}
+
+.btn-center {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 15px; 
+}
+
+.btn-right {
+  display: flex;
+  justify-content: flex-end; /* 버튼을 오른쪽에 정렬 */
+  margin-top: 20px; /* 버튼 위쪽 간격 설정 */
+}
+
+.sign-up {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: black;
+  font-size: 2rem;
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.sign-up button {
+  align-self: center;
+  font-size: 2rem;
+}
+
+.login-google {
+  display: inherit;
+  position: relative;
+  width: 7%;
+  height: 5vh;
+  object-fit: contain;
+  z-index: 1;
+}
+
+.login-google-text {
+  font-family: 'Roboto', sans-serif;
+  margin-left: 24px !important;
+  align-items: center;
+}
