@@ -11,7 +11,7 @@ const Mbti = ({ item, isFirst }) => {
   const [fields, setFields] = useState(['첫 번째 분야', '두 번째 분야', '세 번째 분야']);
   useEffect(() => {
     // 백엔드 API 엔드포인트 URL
-    const apiUrl = '백엔드 API 엔드포인트 URL을 입력하세요';//백엔드 API!!!!!!!!!!!!!!!
+    const apiUrl = 'https://6097350120.for-seoul.synctreengine.com/account'; // 백엔드 API 주소
 
     // 백엔드에서 데이터를 비동기적으로 가져오는 함수를 정의합니다.
     const fetchData = async () => {
@@ -19,9 +19,9 @@ const Mbti = ({ item, isFirst }) => {
         // API 요청 보내기
         const response = await fetch(apiUrl);
         const data = await response.json();
-        // 받아온 데이터로 values와 texts 상태를 업데이트합니다.
-        setValues(data.values);
-        setFields(data.fields);
+        // 받아온 데이터로 values와 fields 상태를 업데이트합니다.
+        setValues(data.data.result.map(item => parseInt(item[1], 10))); // 숫자로 변환하여 저장
+        setFields(data.data.result.map(item => item[0])); // 텍스트로 저장
       } catch (error) {
         console.error('데이터 가져오기 실패:', error);
       }

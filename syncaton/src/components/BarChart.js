@@ -10,7 +10,7 @@ const BarChart = ({ value,index,fields }) => {
   return (
     <div className="bar-container">
       <div className="bar" style={barStyle}></div>
-      <p className="bar-text">{fields[index]}에 {value}% 지출하셨습니다.</p> {/* 여기에서 index를 사용해야 올바른 설명이 표시됩니다. */}
+      <p className="bar-text">{fields[index]}에 {value} 지출하셨습니다.</p> {/* 여기에서 index를 사용해야 올바른 설명이 표시됩니다. */}
     </div>
   );
 };
