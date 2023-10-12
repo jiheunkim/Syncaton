@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { auth, signOut } from "../../firebase-config";
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import '../../App.css';
 
 
@@ -10,6 +11,8 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [birth, setBirth] = useState('');
+  const [account, setAccount] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -29,6 +32,14 @@ const Register = () => {
 
   const handleNameChange = (e) => {
     setName(e.target.value);
+  };
+
+  const handleBirthChange = (e) => {
+    setBirth(e.target.value);
+  };
+  
+  const handleAccountChange = (e) => {
+    setAccount(e.target.value);
   };
   // 에러 메시지 컴포넌트
   
@@ -51,6 +62,8 @@ const Register = () => {
     try {
       // Firebase Authentication을 사용하여 사용자 생성
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+      const uid = user.uid; // Firebase에서 생성된 UID
 
       // 사용자 이름 설정
       await updateProfile(userCredential.user, {
@@ -62,6 +75,22 @@ const Register = () => {
     navigate('/sign-up');
 
       // 회원가입 성공 시 리다이렉트 또는 다른 작업 수행
+      const postData = {
+        fields: {
+          id: uid, // Firebase에서 생성된 UID
+          name: name, // 사용자가 입력한 이름
+          account: account, // 사용자가 입력한 계좌 정보
+        }
+      };
+
+      axios.post('back-end api link', postData)
+      .then(response => {
+        // POST 요청이 성공한 경우의 처리
+        console.log('success to send info');
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
 
     } catch (error) {
       console.error('회원가입 실패:', error);
@@ -84,9 +113,9 @@ const Register = () => {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@example.com" required="" />
                 </div>
                 <div>
-                  <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">닉네임</label>
+                  <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">이름</label>
                   <input type="text" name="name" id="name" value={name} onChange={handleNameChange}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="닉네임 입력" required="" />
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="이름을 입력해주세요" required="" />
                 </div>
                 <div>
                   <label htmlFor="password" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">비밀번호</label>
@@ -99,6 +128,16 @@ const Register = () => {
                   className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="" />
                   {/* 에러 메시지 표시 */}
                   {errorMessage && <ErrorMessage message={errorMessage} />}
+                </div>
+                <div>
+                  <label htmlFor="birth" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">생년월일</label>
+                  <input type="text" name="birth" id="birth" value={birth} onChange={handleBirthChange}
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="ex) 010123" required="" />
+                </div>
+                <div>
+                  <label htmlFor="account" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">농협카드정보</label>
+                  <input type="text" name="account" id="account" value={account} onChange={handleAccountChange}
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="계좌번호 (- 빼고 입력해주세요)" required="" />
                 </div>
                 <div className="flex items-start">
                   <div className="flex items-center h-5">
