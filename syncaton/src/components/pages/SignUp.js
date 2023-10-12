@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from "../../firebase-config";
-import { GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import '../../App.css';
 
 
@@ -37,21 +37,6 @@ const SignUp = () => {
       console.error(error);
     }
   };
-
-  const handleGoogleLogin = async (e) => {
-    e.preventDefault();
-
-    const provider = new GoogleAuthProvider(); // provider 구글 설정
-    signInWithPopup(auth, provider) // 팝업창 띄워서 로그인
-      .then((data) => {
-        setUserData(data.user); // user data 설정
-        console.log(data); // console에 UserCredentialImpl 출력
-        navigate('/');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
 
 
   return (
@@ -119,13 +104,6 @@ const SignUp = () => {
                   <img className='login-google' src='https://t1.daumcdn.net/cfile/tistory/251C7B4A52BEB7A526' />
                   로그인
                   <img className='login-google' src='https://t1.daumcdn.net/cfile/tistory/251C7B4A52BEB7A526' />
-                </button>
-                <button
-                  onClick={handleGoogleLogin}
-                  className="relate w-full justify-center rounded-md bg-white py-1 text-m font-semibold leading-6 text-gray-500 shadow-lg hover:bg-blue-500 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                >
-                  <img className='login-google' alt="google" src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/120px-Google_%22G%22_Logo.svg.png' />
-                  <span className="login-google-text">Google 계정으로 로그인</span>
                 </button>
               </div>
             </form>
