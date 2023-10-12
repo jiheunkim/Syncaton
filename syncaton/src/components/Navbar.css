@@ -26,8 +26,9 @@
     margin-left: 100px;
     cursor: pointer;
     text-decoration: none;
+    padding-top: 3px;
     font-size: 1.5rem;
-    font-weight: 600;
+    font-family: 'Hammersmith One', sans-serif;
     display: flex;
     align-items: center;
   }
