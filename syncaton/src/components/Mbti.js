@@ -9,31 +9,6 @@ let message = 'message';
 const Mbti = ({ item, isFirst }) => {
   const [values, setValues] = useState([50, 120, 80]);
   const [indexs, setIndexs] = useState([4,5,6]);
-  useEffect(() => {
-    // 백엔드 API 엔드포인트 URL
-    const apiUrl = 'https://6097350120.for-seoul.synctreengine.com/account'; // 백엔드 API 주소
-
-    // 백엔드에서 데이터를 비동기적으로 가져오는 함수를 정의합니다.
-    const fetchData = async () => {
-      try {
-        // API 요청 보내기
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        // 받아온 데이터로 values와 fields 상태를 업데이트합니다.
-        setValues(data.data.result.map(item => parseInt(item[1], 10))); // 숫자로 변환하여 저장
-        setIndexs(data.data.result.map(item => item[0])); // 텍스트로 저장
-      } catch (error) {
-        console.error('데이터 가져오기 실패:', error);
-      }
-    };
-
-    // 컴포넌트가 마운트될 때 데이터를 가져오도록 호출합니다.
-    fetchData();
-  }, []); // 빈 배열을 전달하여 컴포넌트가 마운트될 때 한 번만 실행되도록 설정합니다.
-
-
-
-
   const [nickname, setNickname] = useState(['쇼핑매니아']);
   const [explain, setExplain] = useState(['당신은 재미있는 쇼핑을 즐기며 지갑과 마음 모두에 행복을 담는 쇼핑 매니아 입니다.']);
   useEffect(() => {
@@ -47,8 +22,10 @@ const Mbti = ({ item, isFirst }) => {
         const response = await fetch(apiUrl);
         const data = await response.json();
         // 받아온 데이터로 values와 fields 상태를 업데이트합니다.
-        setNickname(data.data.result.map(item => item[0])); // 숫자로 변환하여 저장
-        setExplain(data.data.result.map(item => item[1])); // 텍스트로 저장
+        setValues(data.data.result.map(item => parseInt(item[1], 10))); // 숫자로 변환하여 저장
+        setIndexs(data.data.result.map(item => item[0])); // 텍스트로 저장
+        setNickname(data.data.type.map(item => item[0])); // 텍스트로 저장
+        setExplain(data.data.type.map(item => item[1])); // 텍스트로 저장
       } catch (error) {
         console.error('데이터 가져오기 실패:', error);
       }
