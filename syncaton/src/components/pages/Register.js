@@ -83,10 +83,10 @@ const Register = () => {
         }
       };
 
-      axios.post('back-end api link', postData)
+      axios.post(`https://6097350120.for-seoul.synctreengine.com/signup`, postData)
       .then(response => {
         // POST 요청이 성공한 경우의 처리
-        console.log('success to send info');
+        console.log(response.data);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
