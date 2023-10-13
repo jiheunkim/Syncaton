@@ -20,7 +20,7 @@ const Mbti = ({ item, isFirst }) => {
     setLoading(true); // 로딩 상태 활성화
   
     axios
-      .get(`https://6097350120.for-seoul.synctreengine.com/account`)
+      .get(`/account`)
       .then((response) => {
         // 서버에서 받은 응답 데이터
         const serverInfo = response.data;

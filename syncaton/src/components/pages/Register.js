@@ -83,7 +83,7 @@ const Register = () => {
         }
       };
 
-      axios.post(`https://6097350120.for-seoul.synctreengine.com/signup`, postData)
+      await axios.post(`/signup`, postData)
       .then(response => {
         // POST 요청이 성공한 경우의 처리
         console.log(response.data);
