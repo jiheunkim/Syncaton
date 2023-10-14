@@ -7,7 +7,7 @@ const MAX_SUMMARY_LENGTH = 100;
 let message = 'message';
 
 const Mbti = ({ item, isFirst }) => {
-  const [values, setValues] = useState([50, 120, 80]);
+  const [values, setValues] = useState([null]);
   const [indexs, setIndexs] = useState([4,5,6]);
   const [nickname, setNickname] = useState(['쇼핑매니아']);
   const [explain, setExplain] = useState(['당신은 재미있는 쇼핑을 즐기며 지갑과 마음 모두에 행복을 담는 쇼핑 매니아 입니다.']);
@@ -22,10 +22,10 @@ const Mbti = ({ item, isFirst }) => {
         const response = await fetch(apiUrl);
         const data = await response.json();
         // 받아온 데이터로 values와 fields 상태를 업데이트합니다.
-        setValues(data.data.result.map(item => parseInt(item[1], 10))); // 숫자로 변환하여 저장
-        setIndexs(data.data.result.map(item => item[0])); // 텍스트로 저장
-        setNickname(data.data.type.map(item => item[0])); // 텍스트로 저장
-        setExplain(data.data.type.map(item => item[1])); // 텍스트로 저장
+        setValues(data.data.result.map(item => item)); // 숫자로 변환하여 저장
+        // setIndexs(data.data.result.map(item => item[0])); // 텍스트로 저장
+        // setNickname(data.data.type.map(item => item[0])); // 텍스트로 저장
+        // setExplain(data.data.type.map(item => item[1])); // 텍스트로 저장
       } catch (error) {
         console.error('데이터 가져오기 실패:', error);
       }
@@ -48,6 +48,8 @@ const Mbti = ({ item, isFirst }) => {
           <br />
           <span style={{ fontWeight: 300, fontSize: '16px', lineHeight: '1.5' }}>
             {explain} <br></br><br></br>
+
+            {values}
              {/* 쇼핑에 90%를 지출했습니다. <br></br>
              의류에 65%를 지출했습니다.<br></br>
              현대백화점에 70%를 지출하였습니다.<br></br> */}
