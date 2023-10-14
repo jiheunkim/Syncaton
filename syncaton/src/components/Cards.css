@@ -20,6 +20,7 @@
     max-width: 1120px;
     width: 90%;
     margin: 0 auto;
+    font-family: 'PretendardVariable', sans-serif; /* 원하는 글꼴로 설정 */
   }
   
   .cards__wrapper {
