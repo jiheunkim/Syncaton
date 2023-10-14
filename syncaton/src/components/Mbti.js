@@ -7,14 +7,11 @@ import React, { useState, useEffect } from 'react';
 const MAX_SUMMARY_LENGTH = 100;
 let message = 'message';
 
-const Mbti = ({ item, isFirst }) => {
+const Mbti = () => {
   const [loading, setLoading] = useState(false); // 로딩 상태 추가
   const [info, setInfo] = useState([]);
-
-  const [values, setValues] = useState([50, 120, 80]);
-  const [indexs, setIndexs] = useState([4,5,6]);
-  const [nickname, setNickname] = useState(['쇼핑매니아']);
-  const [explain, setExplain] = useState(['당신은 재미있는 쇼핑을 즐기며 지갑과 마음 모두에 행복을 담는 쇼핑 매니아 입니다.']);
+  const [profile, setProfile] = useState([]);
+  const [explain, setExplain] = useState([]);
   
   useEffect(() => {
     setLoading(true); // 로딩 상태 활성화
@@ -26,14 +23,20 @@ const Mbti = ({ item, isFirst }) => {
         const serverInfo = response.data;
         
         // 서버에서 받아온 정보를 현재 이미지 정보에 추가
-        const updatedInfo = serverInfo.result.map((item) => ({
-          result: item[0],
-          type: item[1],
-          dallE: serverInfo.dallE
+        const updatedResultInfo = serverInfo.result.map((item) => ({
+          category: item[0],
+          percent: item[1],
         }));
-  
-        // Info 배열 업데이트
-        setInfo(updatedInfo);
+
+        // result 정보 업데이트
+        setInfo(updatedResultInfo);
+
+        // type 정보 업데이트
+        setExplain(serverInfo.type);
+
+        // dalle 정보 업데이트
+        setProfile(serverInfo.dallE[0].url); // 이미지 URL 업데이트
+
       })
       .catch((error) => {
         // 오류 발생 시의 처리
@@ -43,28 +46,6 @@ const Mbti = ({ item, isFirst }) => {
         setLoading(false); // 로딩 상태 비활성화
       });
   }, []);
-      
-    // // 백엔드에서 데이터를 비동기적으로 가져오는 함수를 정의합니다.
-    // const fetchData = async () => {
-    //   try {
-    //     // API 요청 보내기
-    //     const response = await fetch(apiUrl);
-    //     const data = await response.json();
-    //     // 받아온 데이터로 values와 fields 상태를 업데이트합니다.
-    //     setValues(data.data.result.map(item => parseInt(item[1], 10))); // 숫자로 변환하여 저장
-    //     setIndexs(data.data.result.map(item => item[0])); // 텍스트로 저장
-    //     setNickname(data.data.type.map(item => item[0])); // 텍스트로 저장
-    //     setExplain(data.data.type.map(item => item[1])); // 텍스트로 저장
-    //   } catch (error) {
-    //     console.error('데이터 가져오기 실패:', error);
-    //   } finally {
-    //     setLoading(false); // 로딩 상태 비활성화
-    //   }
-    // };
-
-    // // 컴포넌트가 마운트될 때 데이터를 가져오도록 호출합니다.
-    // fetchData();
-
 
 
 
@@ -72,23 +53,25 @@ const Mbti = ({ item, isFirst }) => {
     <div className='mbti-container'>
       <div className='mbti-content'>
         <div className='mbti-text'>
-          <span className='w-btn w-btn-blue' style={{ fontWeight: 'bold',fontSize:'30px' }}>당신의 쇼핑유형은 "{info}"입니다.</span>
-          <br></br>
-          <span style={{ fontWeight: 600, fontSize: '20px' }}>{}</span>
-          <br />
-          <span style={{ fontWeight: 300, fontSize: '16px', lineHeight: '1.5' }}>
-            {info} <br></br><br></br>
-             {/* 쇼핑에 90%를 지출했습니다. <br></br>
-             의류에 65%를 지출했습니다.<br></br>
-             현대백화점에 70%를 지출하였습니다.<br></br> */}
-            <br></br> {/* 요약 내용 표시 */}
-          </span>
+        {/* 이미지를 화면에 표시 */}
+        <img
+          className='img'
+          alt='dalle'
+          src={profile}
+        />
+        <span className="w-btn w-btn-blue" style={{ fontWeight: 'bold', fontSize: '30px' }}>
+          당신의 쇼핑유형은 "{explain[0]}"입니다.
+        </span>
+        <br></br>
+        <span style={{ fontWeight: 600, fontSize: '20px' }}>
+          {explain[1]}
+        </span>
         </div>
         <br></br><br></br><br></br>
 
         <div className="bar-chart-container">
-  {values.map((value, indexs) => (
-    <BarChart key={indexs} value={value} indexs={indexs}/>
+  {info.map((info, indexs) => (
+    <BarChart key={indexs} value={info.percent} indexs={info.category}/>
   ))}
 </div>
 
