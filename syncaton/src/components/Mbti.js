@@ -55,25 +55,25 @@ const Mbti = () => {
         <div className='mbti-text'>
         {/* 이미지를 화면에 표시 */}
         <img
-          className='img'
+          className='profileImg'
           alt='dalle'
           src={profile}
         />
-        <span className="w-btn w-btn-blue" style={{ fontWeight: 'bold', fontSize: '30px' }}>
+        <span className="w-btn w-btn-blue" style={{ fontFamily: 'PretendardVariable', fontWeight: 'bold', fontSize: '30px' }}>
           당신의 쇼핑유형은 "{explain[0]}"입니다.
         </span>
-        <br></br>
-        <span style={{ fontWeight: 600, fontSize: '20px' }}>
+        <br></br><br></br>
+        <span style={{ fontFamily: 'PretendardVariable', fontWeight: 500, fontSize: '20px' }}>
           {explain[1]}
         </span>
         </div>
         <br></br><br></br><br></br>
 
         <div className="bar-chart-container">
-  {info.map((info, indexs) => (
-    <BarChart key={indexs} value={info.percent} indexs={info.category}/>
-  ))}
-</div>
+          {info.map((info, indexs) => (
+            <BarChart key={indexs} value={info.percent} indexs={info.category}/>
+          ))}
+        </div>
 
 
     <br></br><br></br><br></br>
