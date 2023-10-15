@@ -84,7 +84,7 @@ function Navbar() {
                 <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
               </div>
               <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link
                     to="/mypage"
                     className={`nav-links ${activeLink === 'mypage' ? 'active' : ''}`}
@@ -92,7 +92,7 @@ function Navbar() {
                   >
                     마이페이지
                   </Link>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <button className={`nav-links-mobile ${activeLink === 'sign-up' ? 'active' : ''}`} onClick={handleLoginButtonClick}>
                     {loggedIn ? '로그아웃' : '로그인'}
