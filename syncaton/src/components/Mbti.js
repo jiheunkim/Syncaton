@@ -3,6 +3,7 @@ import CardItem from './CardItem';
 import BarChart from './BarChart'; // BarChart 컴포넌트를 불러옵니다.
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const MAX_SUMMARY_LENGTH = 100;
@@ -17,6 +18,8 @@ const Mbti = () => {
   const [showPopup, setShowPopup] = useState(false); // 팝업창
   const [uid, setUid] = useState(null); // 사용자 UID 상태
   const fields = ['교육비','통신비','음식','교통','쇼핑','카페','여행','문화생활','생활'];
+
+  const navigate = useNavigate();
   
   const handleClick = (e) => {
     e.preventDefault();
@@ -38,7 +41,8 @@ const Mbti = () => {
         setUid(userUid); // 사용자 UID 설정
       } else {
         // 사용자가 로그아웃한 경우 또는 로그인하지 않은 경우
-        setUid(null); // UID를 초기화하거나 다른 처리를 수행할 수 있습니다.
+        // 로그인 페이지로 이동
+        navigate('/sign-up');
       }
     });
   
