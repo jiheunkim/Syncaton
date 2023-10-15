@@ -9,13 +9,22 @@ function CardItem(props) {
           <figure className='cards__item__pic-wrap' data-category={props.label}>
             <img
               className='cards__item__img'
-              alt='Travel Image'
+              alt='Card Image'
               src={props.src}
-              style={props.style}  /* 스타일 속성을 props로 받아옴 */
             />
           </figure>
           <div className='cards__item__info'>
-            <h5 className='cards__item__text'>{props.text}</h5>
+            <div className='cards__item__text'>{props.text1}</div>
+          </div>
+          <div className='cards__item__info'>
+            <div className='cards__item__text0'>🌟최대혜택🌟</div>
+          </div>
+          <div className='cards__item__info'>
+            <div className='cards__item__text1'>{props.text2}</div>
+          </div>
+          <br></br>
+          <div className='cards__item__info'>
+            <a href={props.path} className='cards__item__text2'>👉{props.label} 신청하러 가기</a>
           </div>
         </Link>
       </li>
