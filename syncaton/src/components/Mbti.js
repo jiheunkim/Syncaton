@@ -105,7 +105,11 @@ const Mbti = () => {
           <div className='white-box'>
           {message}
           </div>
-          <br></br><br></br>
+          <br></br><br></br><br></br>
+          <div className='today-msg'>
+          💚TOP3 지출💚
+          </div>
+          <br></br>
           <div>
           {info.map((info, indexs) => (
             <BarChart key={indexs} value={info.percent} indexs={info.category}/>
