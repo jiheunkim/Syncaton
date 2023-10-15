@@ -14,7 +14,7 @@ const BarChart = ({ value,indexs }) => {
 
   const fieldValue = getBarField(indexs); // indexs에 따른 필드 값을 가져옵니다.
 
-  const formattedString =`${fieldValue} 에 ${value} % 지출하셨습니다.`; // 템플릿 문자열 사용
+  const formattedString =`지출하셨습니다.`; // 템플릿 문자열 사용
 
   
   const barStyle = {
@@ -25,7 +25,9 @@ const BarChart = ({ value,indexs }) => {
   return (
     <div className="bar-container">
       <div className="bar" style={barStyle}></div>
-      <p className="bar-text">{formattedString}</p> {/* 여기에서 index를 사용해야 올바른 설명이 표시됩니다. */}
+      <p className="bar-text">
+        <span className='bar-text2'>{fieldValue}</span>에&nbsp;&nbsp;
+        <span className='bar-text3'>{value}%</span>&nbsp;{formattedString}</p> {/* 여기에서 index를 사용해야 올바른 설명이 표시됩니다. */}
     </div>
   );
 };
