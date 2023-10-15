@@ -12,7 +12,7 @@ function Cards() {
   useEffect(() => {
     setLoading(true);
 
-    axios.get('https://6097350120.for-seoul.synctreengine.com/login') // 백엔드 주소 집어넣기
+    axios.post('https://6097350120.for-seoul.synctreengine.com/login') // 백엔드 주소 집어넣기
       .then((response) => {
         const serverInfo = response.data;
 
