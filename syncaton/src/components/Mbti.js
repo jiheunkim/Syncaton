@@ -92,11 +92,7 @@ const Mbti = () => {
         <span style={{ fontFamily: 'PretendardVariable', fontWeight: 500, fontSize: '20px' }}>
           {explain[1]}
         </span>
-        <br></br><br></br><br></br>
-        
         </div>
-        <br></br><br></br><br></br>
-
         <div className="bar-chart-container">
           <div className='today-msg'>
           👉오늘의 메시지👈
@@ -116,27 +112,6 @@ const Mbti = () => {
           ))}
           </div>
         </div>
-
-
-    <br></br><br></br><br></br>
-
-        {/* <div className='mbti-image'>
-        <CardItem
-              src='https://slownews.kr/wp-content/uploads/2016/11/shopping.jpg'
-              text={
-                <>
-                  <br/><br/>
-                  <strong>혜택:</strong><br/>
-                  - 현대백화점 5% 할인<br/>
-                  - 3개월 무이자 할부<br/>
-                  - 현대백화점 2시간 무료주차<br/>
-                  - 현대백화점 회원 혜택
-                </>
-              }
-              label='현대백화점 카드'
-              path='https://www.ehyundai.com/newPortal/card/CA/CA000001_V.do?r=&event_id=&use_r='
-            />
-        </div> */}
       </div>
     </div>
   );
