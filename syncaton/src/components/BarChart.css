@@ -11,7 +11,7 @@
   .bar {
       height: 30px; /* 막대의 높이 */
       margin-bottom: 5px; /* 막대간 간격 */
-      border-radius: 10%;
+      border-radius: 15px;
     }
 
     .bar-text {
