@@ -4,6 +4,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    background-color: rgb(242, 246, 247);
     overflow-y: auto; /* 세로 스크롤 허용 */
   }
   
@@ -24,8 +25,43 @@
     object-fit: cover;
     overflow-y: auto; /* 세로 스크롤 허용 */
   }
+
+  .type-emphasize {
+    font-family: 'PretendardVariable';
+    font-weight: 800;
+    font-size: 35px;
+    color: rgb(28, 50, 93);
+  }
   
+  .bar-chart-container {
+    margin-left: 5%;
+    width: 500px;
+  }
+
+    .today-msg {
+      font-family: 'DNFBitBit';
+      font-weight: 500;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    .white-box {
+      font-family: 'DNFBitBit';
+      width: auto;
+      height: auto;
+      background-color: #fcf5cd;
+      border-radius: 10px;
+      border: 1px;
+      text-align: center;
+      font-size: 24px;
+      padding: 5%;
+    }
+
+
 .profileImg {
-  padding: 5%;
+  background-color: white;
+  border-radius: 5%;
+  padding: 2%;
   margin-bottom: 10px;
+  box-shadow: 0px 4px 4px 0px rgb(196, 194, 194);
 }
