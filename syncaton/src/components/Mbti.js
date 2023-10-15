@@ -14,8 +14,19 @@ const Mbti = () => {
   const [profile, setProfile] = useState([]);
   const [explain, setExplain] = useState([]);
   const [message, setMessage] = useState([]);
+  const [showPopup, setShowPopup] = useState(false); // 팝업창
   const [uid, setUid] = useState(null); // 사용자 UID 상태
+  const fields = ['교육비','통신비','음식','교통','쇼핑','카페','여행','문화생활','생활'];
   
+  const handleClick = (e) => {
+    e.preventDefault();
+    setShowPopup(true);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
+  };
+
   useEffect(() => {
     setLoading(true); // 로딩 상태 활성화
 
@@ -74,6 +85,7 @@ const Mbti = () => {
 
 
   return (
+    <>
     <div className='mbti-container'>
       <div className='mbti-content'>
         <div className='mbti-text'>
@@ -83,9 +95,10 @@ const Mbti = () => {
           alt='dalle'
           src={profile}
         />
+        <div className='coupon-box' onClick={handleClick}>내 쇼핑유형에 맞는 쿠폰 받기💳</div>
         <br></br>
-        <span className="w-btn w-btn-blue" style={{ fontFamily: 'PretendardVariable', fontWeight: 700, fontSize: '30px' }}>
-          당신의 쇼핑유형은 <span className='type-emphasize'>
+        <span className="w-btn w-btn-blue" style={{ fontFamily: 'PretendardVariable', fontWeight: 700, fontSize: '28px' }}>
+          당신의 쇼핑유형은 &nbsp;<span className='type-emphasize'>
             {explain[0]}</span>입니다
         </span>
         <br></br><br></br>
@@ -113,7 +126,22 @@ const Mbti = () => {
           </div>
         </div>
       </div>
+      {showPopup && (
+          <>
+          <div className="modal-background">
+              {/* 모달 백그라운드 */}
+            </div>
+          <div className="popup">
+            <img className="popup-close" alt="closeBtn" src="/image/buttonClose.png" onClick={closePopup}/>
+            <div className='popup-t'>!</div>
+            <p className='popup-text'>10월의 쿠폰 혜택<br></br></p>
+            <img className="popup-qr" alt="qrcode" src="/image/qrcode.png" />
+            <button className='popup-submit'>[{fields[info[0].category]} 10% 할인]</button>
+          </div>
+          </>
+        )}
     </div>
+    </>
   );
 };
 
