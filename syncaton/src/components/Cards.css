@@ -1,44 +1,41 @@
-/* .cards {
-    padding: 4rem;
-    background: #fff;
-  } */
 
-  .cards {
-    padding: 4rem;
-    background: none; /* 배경 제거 */
+  .card_container {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: rgb(242, 246, 247);
+    font-family: 'PretendardVariable' /* 원하는 글꼴로 설정 */
   }
-  
-  h1 {
-    text-align: center;
-    font-family: 'Noto Sans KR', sans-serif;
-  }
-  
+
+    .card_click {
+      text-align: center;
+    }
+
+    .cards__text {
+      color: #252e48;
+      margin-top: 10px;
+      font-size: 30px;
+      font-weight: 600;
+      text-align: center;
+      font-family: 'PretendardVariable';
+      line-height: 24px;
+    }
+
+
+    
   .cards__container {
     display: flex;
     flex-flow: column;
-    align-items: center;
-    max-width: 1120px;
-    width: 90%;
-    margin: 0 auto;
-    font-family: 'PretendardVariable', sans-serif; /* 원하는 글꼴로 설정 */
-  }
-  
-  .cards__wrapper {
-    position: relative;
-    margin: 50px 0 45px;
+    font-family: 'PretendardVariable' /* 원하는 글꼴로 설정 */
   }
   
   .cards__items {
     margin-bottom: 24px;
     display: flex; /* 카드를 가로로 나열하도록 설정 */
   }
-  
-  /* .cards__item {
-    display: flex;
-    flex: 1;
-    margin: 0 1rem;
-    border-radius: 10px;
-  } */
+
   .cards__item {
     display: flex;
     flex: 1;
@@ -46,17 +43,6 @@
     border-radius: 10px; /* 테두리를 둥글게 만들기 위해 추가됨 */
   }
   
-  /* .cards__item__link {
-    display: flex;
-    flex-flow: column;
-    width: 100%;
-    box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
-    -webkit-filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
-    filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
-    border-radius: 10px;
-    overflow: hidden;
-    text-decoration: none;
-  } */
   .cards__item__link {
     display: flex;
     flex-flow: column;
@@ -70,7 +56,7 @@
   .cards__item__pic-wrap {
     position: relative;
     width: 100%;
-    padding-top: 67%;
+    padding-top: 25%;
     overflow: hidden;
   }
   
@@ -83,46 +69,73 @@
     content: attr(data-category);
     position: absolute;
     bottom: 0;
-    margin-left: 10px;
+    margin-left: 15px;
     padding: 6px 8px;
     max-width: calc((100%) - 60px);
     font-size: 12px;
     font-weight: 700;
     color: #fff;
-    background-color: #9aa1a7;
+    background-color: #2c7af0;
     box-sizing: border-box;
   }
   
   .cards__item__img {
-    position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     display: block;
     width: 100%;
-    max-width: 100%;
     height: 100%;
     max-height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: all 0.2s linear;
   }
   
-  .cards__item__img:hover {
-    transform: scale(1.1);
-  }
-  
   .cards__item__info {
-    padding: 20px 30px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   
   .cards__item__text {
     color: #252e48;
-    font-size: 14px;
-    font-family: 'Noto Sans KR', sans-serif;
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    font-family: 'PretendardVariable';
     line-height: 24px;
-    line-height: 1.5; /* 줄 간격을 1.5배로 설정 */
+    line-height: 2;
+  }
+
+  .cards__item__text0 {
+    color: #252e48;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    font-family: 'PretendardVariable';
+    line-height: 24px;
+  }
+
+  .cards__item__text1 {
+    color: #252e48;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    font-family: 'PretendardVariable';
+    line-height: 24px;
+    line-height: 2;
+  }
+
+  .cards__item__text2 {
+    font-family: 'PretendardVariable';
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    color: rgb(38, 139, 248);
   }
   
   @media only screen and (min-width: 1200px) {

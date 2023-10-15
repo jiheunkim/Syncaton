@@ -2,7 +2,7 @@ import React from 'react';
 import './BarChart.css'; // 스타일 파일을 불러옵니다.
 
 
-const BarChart = ({ value,indexs }) => {
+const BarChart = ({ value, indexs }) => {
   const getBarColor = (indexs) => {
     const colors = ['#FFC107', '#03A9F4', '#FF5722', '#607D8B', '#FF9800', '#795548', '#8BC34A', '#9C27B0', '#2196F3'];
     return colors[indexs % colors.length]; // index 값이 범위를 벗어날 경우를 대비해 % 연산자 사용
@@ -18,7 +18,7 @@ const BarChart = ({ value,indexs }) => {
 
   
   const barStyle = {
-    width: `${value}px`, // 숫자값에 따라 막대의 넓이를 동적으로 설정합니다.
+    width: `${value*5}px`, // 숫자값에 따라 막대의 넓이를 동적으로 설정합니다.
     backgroundColor: getBarColor(indexs) // 막대의 배경색을 동적으로 설정합니다.
   };
 

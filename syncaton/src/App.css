@@ -17,6 +17,10 @@
   overflow: hidden; /* 내용이 화면을 벗어나지 않도록 설정 */
 }
 
+.App-back2 {
+  background-color: rgb(242, 246, 247);
+}
+
 @font-face {
   font-family: "PretendardVariable";
   src: url("./components/font/PretendardVariable.ttf");
