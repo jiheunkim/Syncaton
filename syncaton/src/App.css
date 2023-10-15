@@ -21,6 +21,10 @@
   font-family: "PretendardVariable";
   src: url("./components/font/PretendardVariable.ttf");
 }
+@font-face {
+  font-family: "DNFBitBit";
+  src: url("./components/font/DNFBitBit.ttf");
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
