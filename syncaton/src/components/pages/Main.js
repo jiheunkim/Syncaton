@@ -11,8 +11,8 @@ function Main() {
       <>
       <div className='App-back2'>
         <Mbti/>
-        <br></br><br></br><br></br>
-        <Cards/>
+        {/* <br></br><br></br><br></br>
+        <Cards/> */}
       </div>
       </>
 

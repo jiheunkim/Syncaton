@@ -1,4 +1,5 @@
-import './Mbti.css'; // 스타일 파일 import
+import './Mbti.css';
+import './Cards.css';
 import CardItem from './CardItem';
 import BarChart from './BarChart'; // BarChart 컴포넌트를 불러옵니다.
 import axios from 'axios';
@@ -11,6 +12,7 @@ let message = 'message';
 
 const Mbti = () => {
   const [loading, setLoading] = useState(false); // 로딩 상태 추가
+  const [loading2, setLoading2] = useState(false); // 로딩 상태2 추가
   const [info, setInfo] = useState([]);
   const [profile, setProfile] = useState([]);
   const [explain, setExplain] = useState([]);
@@ -32,6 +34,7 @@ const Mbti = () => {
 
   useEffect(() => {
     setLoading(true); // 로딩 상태 활성화
+    setLoading2(true); // 로딩 상태 활성화
 
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -74,6 +77,19 @@ const Mbti = () => {
         // 상태메시지 정보 업데이트
         setMessage(serverInfo.msg)
 
+
+        // 카드 추천 api 연동
+        axios.post(`/login`, postData)
+          .then((response) => {
+            const serverInfo = response.data;
+
+            setInfo(serverInfo.result);
+            setLoading2(false); // 데이터 로딩 완료 시 상태 업데이트
+          })
+          .catch(error => {
+            console.error('Error fetching data:', error);
+            setLoading2(false);
+          });
       })
       .catch((error) => {
         // 오류 발생 시의 처리
@@ -92,43 +108,54 @@ const Mbti = () => {
     <>
     <div className='mbti-container'>
       <div className='mbti-content'>
-        <div className='mbti-text'>
         {/* 이미지를 화면에 표시 */}
-        <img
-          className='profileImg'
-          alt='dalle'
-          src={profile}
-        />
-        <div className='coupon-box' onClick={handleClick}>내 쇼핑유형에 맞는 쿠폰 받기💳</div>
-        <br></br>
-        <span className="w-btn w-btn-blue" style={{ fontFamily: 'PretendardVariable', fontWeight: 700, fontSize: '28px' }}>
-          당신의 쇼핑유형은 &nbsp;<span className='type-emphasize'>
-            {explain[0]}</span>입니다
-        </span>
-        <br></br><br></br>
-        <span style={{ fontFamily: 'PretendardVariable', fontWeight: 500, fontSize: '20px' }}>
-          {explain[1]}
-        </span>
-        </div>
-        <div className="bar-chart-container">
-          <div className='today-msg'>
-          👉오늘의 메시지👈
+        {loading ? (
+          <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-700 opacity-75 flex flex-col items-center justify-center">
+            <div className="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12 mb-4"></div>
+            <h2 className="text-center text-white text-xl font-semibold">로딩 중...</h2><br></br>
+            <h2 className="text-center text-white text-xl font-semibold">카드 지출내역 바탕으로 최적의 쇼핑유형 분석 중💸</h2><br></br>
+            <p className="text-center text-white">This may take a few seconds, please don't close this page.</p>
           </div>
-          <br></br>
-          <div className='white-box'>
-          {message}
+        ) : (
+          <>
+          <div className='mbti-text'>
+            <img
+              className='profileImg'
+              alt='dalle'
+              src={profile}
+            />
+            <div className='coupon-box' onClick={handleClick}>내 쇼핑유형에 맞는 쿠폰 받기💳</div>
+            <br></br>
+            <span className="w-btn w-btn-blue" style={{ fontFamily: 'PretendardVariable', fontWeight: 700, fontSize: '28px' }}>
+              당신의 쇼핑유형은 &nbsp;<span className='type-emphasize'>
+                {explain[0]}</span>입니다
+            </span>
+            <br></br><br></br>
+            <span style={{ fontFamily: 'PretendardVariable', fontWeight: 500, fontSize: '20px' }}>
+              {explain[1]}
+            </span>
           </div>
-          <br></br><br></br><br></br>
-          <div className='today-msg'>
-          💚TOP3 지출💚
+          <div className="bar-chart-container">
+            <div className='today-msg'>
+            👉오늘의 메시지👈
+            </div>
+            <br></br>
+            <div className='white-box'>
+            {message}
+            </div>
+            <br></br><br></br><br></br>
+            <div className='today-msg'>
+            💚TOP3 지출💚
+            </div>
+            <br></br>
+            <div>
+            {info.map((info, indexs) => (
+              <BarChart key={indexs} value={info.percent} indexs={info.category}/>
+            ))}
+            </div>
           </div>
-          <br></br>
-          <div>
-          {info.map((info, indexs) => (
-            <BarChart key={indexs} value={info.percent} indexs={info.category}/>
-          ))}
-          </div>
-        </div>
+          </>
+        )}
       </div>
       {showPopup && (
           <>
@@ -144,6 +171,28 @@ const Mbti = () => {
           </div>
           </>
         )}
+    </div>
+    <br></br><br></br><br></br>
+    <div className='cards__text'>
+    나의 쇼핑유형에 맞는 카드 추천받기
+    </div>
+    <div className="card_container">
+      {loading2 ? (
+        <p className='cards__item__text'><br></br>Loading...</p>
+      ) : (
+        info.map((item, index) => (
+          <div key={index}>
+            <CardItem
+              src={item.card_img}
+              text1={item.card_name}
+              text2={`- ${item.card_advantage}`} 
+              label={item.card_name}
+              path={item.card_url}
+            />
+            <br></br><br></br><br></br><br></br>
+          </div>
+        ))
+      )}
     </div>
     </>
   );
