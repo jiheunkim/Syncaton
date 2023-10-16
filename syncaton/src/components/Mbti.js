@@ -14,6 +14,7 @@ const Mbti = () => {
   const [loading, setLoading] = useState(false); // 로딩 상태 추가
   const [loading2, setLoading2] = useState(false); // 로딩 상태2 추가
   const [info, setInfo] = useState([]);
+  const [info2, setInfo2] = useState([]);
   const [profile, setProfile] = useState([]);
   const [explain, setExplain] = useState([]);
   const [message, setMessage] = useState([]);
@@ -83,11 +84,11 @@ const Mbti = () => {
           .then((response) => {
             const serverInfo = response.data;
 
-            setInfo(serverInfo.result);
+            setInfo2(serverInfo.result);
             setLoading2(false); // 데이터 로딩 완료 시 상태 업데이트
           })
           .catch(error => {
-            console.error('Error fetching data:', error);
+            console.error('카드 추천 Error fetching data:', error);
             setLoading2(false);
           });
       })
@@ -180,7 +181,7 @@ const Mbti = () => {
       {loading2 ? (
         <p className='cards__item__text'><br></br>Loading...</p>
       ) : (
-        info.map((item, index) => (
+        info2.map((item, index) => (
           <div key={index}>
             <CardItem
               src={item.card_img}
