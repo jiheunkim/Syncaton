@@ -38,6 +38,7 @@
       "last 1 safari version"
     ]
   },
+  "homepage": "https://dallecapture.netlify.app/",
   "proxy": "https://6097350120.for-seoul.synctreengine.com/",
   "devDependencies": {
     "tailwindcss": "^3.3.3"
