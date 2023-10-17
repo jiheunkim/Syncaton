@@ -45,7 +45,7 @@ const Mbti = () => {
         setUid(userUid); // 사용자 UID 설정
 
         const postData = {
-          uid: uid,
+          uid: userUid,
         };
 
         console.log('uid:', postData)
