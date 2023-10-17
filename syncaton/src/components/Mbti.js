@@ -43,18 +43,14 @@ const Mbti = () => {
         // 사용자가 로그인한 경우
         const userUid = user.uid;
         setUid(userUid); // 사용자 UID 설정
-      } else {
-        // 사용자가 로그아웃한 경우 또는 로그인하지 않은 경우
-        // 로그인 페이지로 이동
-        navigate('/sign-up');
-      }
-    });
-  
-    const postData = {
-      uid: uid
-    };
 
-    axios
+        const postData = {
+          uid: uid,
+        };
+
+        console.log('uid:', postData)
+
+        axios
       .post(`/account`, postData)
       .then((response) => {
         // 서버에서 받은 응답 데이터
@@ -100,7 +96,14 @@ const Mbti = () => {
         setLoading(false); // 로딩 상태 비활성화
       });
 
-      return () => unsubscribe();
+      } else {
+        // 사용자가 로그아웃한 경우 또는 로그인하지 않은 경우
+        // 로그인 페이지로 이동
+        navigate('/sign-up');
+      }
+    });
+
+    return () => unsubscribe();
   }, []);
 
 
