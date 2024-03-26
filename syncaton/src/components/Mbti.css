@@ -1,0 +1,146 @@
+/* Mbti.css */
+.mbti-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: rgb(242, 246, 247);
+    overflow-y: auto; /* 세로 스크롤 허용 */
+  }
+  
+  .mbti-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .mbti-text {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .mbti-image {
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    overflow-y: auto; /* 세로 스크롤 허용 */
+  }
+
+  .type-emphasize {
+    font-family: 'PretendardVariable';
+    font-weight: 800;
+    font-size: 32px;
+    color: rgb(28, 50, 93);
+  }
+  
+  .bar-chart-container {
+    margin-left: 5%;
+    width: 500px;
+  }
+
+    .today-msg {
+      font-family: 'DNFBitBit';
+      font-weight: 500;
+      font-size: 30px;
+      text-align: center;
+    }
+
+    .white-box {
+      font-family: 'DNFBitBit';
+      width: auto;
+      height: auto;
+      background-color: #fcf5cd;
+      border-radius: 10px;
+      border: 1px;
+      text-align: center;
+      font-size: 24px;
+      padding: 5%;
+    }
+
+
+.profileImg {
+  background-color: white;
+  border-radius: 5%;
+  padding: 2%;
+  margin-bottom: 10px;
+  box-shadow: 0px 4px 4px 0px rgb(196, 194, 194);
+}
+
+.coupon-box {
+  font-family: 'PretendardVariable';
+  font-weight: 800;
+  font-size: 18px;
+  background-color: rgb(211, 238, 247);
+  border-radius: 10px;
+  padding: 2%;
+  margin-bottom: 10px;
+  box-shadow: 0px 4px 4px 0px rgb(196, 194, 194);
+}
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(137, 135, 135, 0.6); /* 어두운 배경 색상 및 투명도 설정 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup {
+  width: 891px;
+  height: 566px;
+  background-color: #fff;
+  border-radius: 38px;
+  border: 1px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.popup-t {
+  text-align: center;
+  font-family: "DNFBitBit";
+  font-size: 128px;
+  font-weight: 400;
+  line-height: 138.24px;
+}
+
+.popup-text {
+  text-align: center;
+  font-family: "PretendardVariable";
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 47.73px;
+}
+
+.popup-qr {
+  width: 200px;
+}
+
+.popup-submit {
+  text-align: center;
+  font-family: "PretendardVariable";
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 47.73px;
+  letter-spacing: 4.5%;
+  border: none;
+  background-color: #fff;
+}
+
+.popup-close {
+  position: absolute;
+  top: 35px;
+  right: 40px;
+  width: 24px;
+  height: 26.18px;
+}

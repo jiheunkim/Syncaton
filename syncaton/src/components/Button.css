@@ -1,0 +1,99 @@
+:root {
+    --primary: #fff;
+}
+
+.btn{
+    padding: 8px 20px;
+    border-radius: 2px;
+    outline: black;
+    border: none;
+    cursor: pointer;
+}
+
+.btn--primary{
+    background-color: var(--primary);
+    color: #242424;
+    border: 1px solid var(--primary);
+}
+
+.btn--primary2{
+    background-color: var(--primary);
+    color: white;
+    border: 1px solid var(--primary);
+}
+
+.btn--outline {
+    background-color: transparent;
+    color: black;
+    padding:8px 20px;
+    border: 1px solid black;
+    transition: all 0.3s ease-out;
+}
+
+.btn--board {
+    padding: 8px 20px;
+    outline: black;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: black;
+    color: white;
+    border-color: black;
+    border-radius: 8px;
+    width: 16vh;
+}
+.btn--footer {
+    padding: 8px 20px;
+    outline: black;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: white;
+    color: black;
+    border-color: black;
+    border-radius: 8px;
+    height: 6vh;
+    width: 7vh;
+}
+
+.btn--small {
+    padding: 10px 22px;
+    font-size: 16px;
+}
+
+.btn-medium {
+    padding: 8px 20px;
+    font-size: 20px;
+
+}
+
+.btn--large {
+    padding: 12px 26px;
+    font-size: 20px;
+}
+
+.btn--music-style {
+    background-color: black;
+    color: white;
+    border-color: black;
+    border-radius: 15px;
+    width: 25vh;
+}
+
+
+.btn--medium:hover, 
+.btn--large:hover{
+    background: white;
+    color: #242424;
+    transition: all 0.3s ease-out;
+
+}
+.btn-space{
+
+    margin-right: 50px;
+}
+
+.btn--large-custom {
+    font-size: 30px; /* 더 큰 글자 크기 */
+    padding: 30px 60px; /* 더 큰 내부 여백 */ 
+  }
