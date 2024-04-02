@@ -17,5 +17,12 @@
 2023.09.25 ~ 2023.10.17
 <br><br><br>
 
+## 🛠️ Tech Stacks
+<div>
+  <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white">
+  <img src="https://img.shields.io/badge/django-092E20?style=for-the-badge&logo=django&logoColor=white">
+</div>
+<br><br><br>
+
 ## 💡 시연 영상
 [![Video Lable](http://img.youtube.com/vi/85qBiDYFwic/0.jpg)](https://youtu.be/85qBiDYFwic?si=Y6iBnJdlE7wj_u0f)
