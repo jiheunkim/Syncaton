@@ -24,5 +24,12 @@
 </div>
 <br><br><br>
 
+## 👩🏻‍💻 배운 점
+- [x] `useState`를 사용하여 컴포넌트에서 상태 변경 관리하기
+- [x] `React`에서 `Firebase` 사용하여 로그인, 회원가입 진행함. 회원가입시 `Firebase`에서 생성된 사용자 uid를 `Django`에 post로 전달하여 추후 api 작업을 진행함. 단기간에 결과물을 완성하는 프로젝트였기에 시간상 백엔드 개발자가 로그인, 회원가입까지 모두 관리하기 촉박하여 프론트 상에서 로그인, 회원가입을 `Firebase` 이용함.  
+- [x] `react-router-dom`을 통해 route를 navigate하기
+- [x] 백엔드와의 api 통신 및 협업
+<br><br><br>
+
 ## 💡 시연 영상
 [![Video Lable](http://img.youtube.com/vi/85qBiDYFwic/0.jpg)](https://youtu.be/85qBiDYFwic?si=Y6iBnJdlE7wj_u0f)
